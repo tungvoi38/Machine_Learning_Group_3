@@ -1,0 +1,27 @@
+data:
+  raw_data_path: "data/raw/"
+  processed_data_path: "data/processed/"
+  external_data_path: "data/external/"
+  
+notebooks:
+  exploration_notebook: "notebooks/01-exploration.ipynb"
+  modeling_notebook: "notebooks/02-modeling.ipynb"
+
+src:
+  dataset_script: "src/data/make_dataset.py"
+  feature_engineering_script: "src/features/build_features.py"
+  model_training_script: "src/models/train_model.py"
+  visualization_script: "src/visualization/visualize.py"
+
+results:
+  figures_path: "results/figures/"
+  models_path: "results/models/"
+
+parameters:
+  model:
+    type: "RandomForest"
+    n_estimators: 100
+    max_depth: 10
+  data_processing:
+    missing_value_strategy: "mean"
+    categorical_encoding: "onehot"

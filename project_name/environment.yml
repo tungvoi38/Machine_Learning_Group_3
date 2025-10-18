@@ -1,0 +1,19 @@
+name: project_name
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyter
+  - pyyaml
+  - requests
+  - tqdm
+  - pip
+  - pip:
+      - ipykernel
+      - black
+      - flake8
