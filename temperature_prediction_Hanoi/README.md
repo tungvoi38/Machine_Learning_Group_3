@@ -1,15 +1,15 @@
-# Project Name: project_name
+# Temperature Prediction — Hanoi
 
-## Overview
-This project is designed for data science tasks, including data exploration, modeling, and visualization. It follows a structured approach to organize data, code, and results effectively.
+## Tổng quan
+Dự án này dự đoán nhiệt độ tại Hà Nội bằng các bước chuẩn hóa dữ liệu, tạo đặc trưng, huấn luyện mô hình và trực quan hóa kết quả. Mục tiêu là cung cấp pipeline có thể tái sử dụng cho thí nghiệm và triển khai.
 
-## Project Structure
+## Cấu trúc dự án
 ```
-project_name
+temperature_prediction_Hanoi
 ├── data
-│   ├── raw
-│   ├── processed
-│   └── external
+│   ├── raw               # Dữ liệu thô (không chỉnh sửa)
+│   ├── processed         # Dữ liệu đã xử lý sẵn sàng cho mô hình
+│   └── external          # Dữ liệu từ nguồn bên ngoài
 ├── notebooks
 │   ├── 01-exploration.ipynb
 │   └── 02-modeling.ipynb
@@ -36,35 +36,48 @@ project_name
 └── README.md
 ```
 
-## Directories and Files
-- **data/**: Contains all data-related files.
-  - **raw/**: Raw data files.
-  - **processed/**: Processed data files.
-  - **external/**: External datasets.
-  
-- **notebooks/**: Jupyter notebooks for exploration and modeling.
-  - **01-exploration.ipynb**: Data exploration and visualization.
-  - **02-modeling.ipynb**: Model building and training.
-  
-- **src/**: Source code for the project.
-  - **data/**: Scripts for data loading and processing.
-  - **features/**: Scripts for feature engineering.
-  - **models/**: Scripts for model training.
-  - **visualization/**: Scripts for data visualization.
-  
-- **tests/**: Unit tests for the project.
-  
-- **results/**: Output files from the analysis.
-  - **figures/**: Visualizations and figures.
-  - **models/**: Trained model artifacts.
-  
-- **configs/**: Configuration files for the project.
-  
-- **environment.yml**: Environment configuration file.
-  
-- **requirements.txt**: List of required Python libraries.
-  
-- **.gitignore**: Files and directories to be ignored by Git.
+## Yêu cầu
+- Hệ điều hành: Ubuntu (dev container được cấu hình sẵn trong môi trường phát triển)
+- Python 3.8+ (hoặc phiên bản tương thích được khai báo trong environment.yml)
+- Công cụ: git, pytest, jupyter (có sẵn trong dev container theo cấu hình)
 
-## Usage
-To get started with this project, clone the repository and install the required dependencies listed in `requirements.txt` or `environment.yml`. Use the Jupyter notebooks for exploration and modeling tasks.
+## Cách cài đặt nhanh
+1. Vào thư mục dự án:
+   cd /workspaces/Machine_Learning_Group_3/temperature_prediction_Hanoi
+
+2. Tạo môi trường ảo và cài dependencies:
+   - Sử dụng pip:
+     python -m venv .venv
+     source .venv/bin/activate
+     pip install -r requirements.txt
+   - Hoặc dùng conda với environment.yml:
+     conda env create -f environment.yml
+     conda activate <env-name>
+
+## Chạy notebook và mở trình duyệt
+- Khởi động Jupyter Lab/Notebook:
+  jupyter lab --no-browser --port=8888
+- Mở trên máy chủ host (từ dev container sử dụng biến môi trường):
+  "$BROWSER" http://localhost:8888
+
+## Chạy test
+- Từ thư mục dự án:
+  pytest -q
+
+## Quy trình chính (ví dụ)
+1. Đặt dữ liệu thô vào data/raw.
+2. Chạy script tạo dataset:
+   python -m src.data.make_dataset
+3. Tạo đặc trưng:
+   python -m src.features.build_features
+4. Huấn luyện mô hình:
+   python -m src.models.train_model
+5. Kết quả và hình ảnh lưu trong thư mục results/
+
+## Ghi chú
+- Giữ data/raw nguyên gốc; chỉ lưu các file đã xử lý vào data/processed.
+- Cấu hình (đường dẫn, tham số) nằm trong configs/config.yaml.
+- Nếu muốn tạo repo và đẩy lên GitHub, sử dụng gh CLI hoặc thiết lập remote bằng git.
+
+## Liên hệ
+Mô tả ngắn, hướng dẫn sử dụng và phần mở rộng có thể cập nhật theo nhu cầu thực nghiệm.
